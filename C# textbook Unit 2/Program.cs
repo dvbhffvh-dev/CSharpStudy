@@ -18,13 +18,19 @@
             2. 공백 포함x 255자 이하
             3. 영어 한글 한자 사용가능 _ 사용가능 기타 특수기호X
             4. 변수는 대소문자 구분, 일반적으로 소문자 사용
+
+            리터럴 : 변수에 저장하는 값, 값 자체를 가지지 않는 널(null)도 있음
+
+            상수 : 변수를 선언할 때 앞에 const 키워드를 붙이면 변수는 상수가 됨
+                  한 번 상수로 선언된 변수는 값 변환X , 반드시 선언과 동시에 초기화
             
 
          
          */
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            const int Max = 100;
+            Console.WriteLine(Max);
         }
     }
 }
