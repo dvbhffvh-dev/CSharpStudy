@@ -81,11 +81,45 @@
             논리연산자   !(NOT)
                        &&(AND)
                        ||(OR)
-            
-            
-            
 
-         
+            제어문 : 프로그램 실행 순서를 제어하거나 프로그램 내용을 반복하는 작업 등을 처리할 때 사용하는 구문으로 조건문과 반복문으로 구분
+            
+            제어문     설명                                              종류
+
+            순차문     프로그램이 작성된 순서대로 실행되는 구문
+
+            조건문     조건의 참 또는 거짓에 따라 서로 다른 명령문을 실행할 수  if문(조건 하나 비교), else문(조건 분기), switch문(다양한 조건)
+            (선택문)   있는 구조
+            
+            반복문     특정 명령문을 지정된 수만큼 반복해서 실행할 때나 조건식이 for문(구간 반복), do문(선행반복), while문(조건 반복),foreach문(배열 반복)
+                      참일 동안 반복시킬때 사용
+
+            기타      break문 : 반복문이나 switch문을 빠져나올 때 사용
+                     continue문 : 반복문에서 조건에 따라 특정 명령문을 건너뛰고 다음 반복으로 넘어갈 때 사용
+                     goto문 : 프로그램 실행 순서를 임의로 이동시킬 때 사용
+
+            Parse 와 TryParse 메서드 의 차이점
+            
+            특성        Parse 메서드                 TryParse 메서드
+            변환값      변환된 데이터 타입의 값         변환 성공 여부(bool)
+            오류 처리   예외 발생                     예외 발생 X
+            사용 예      int.Parse("123")           int.TryParse("123", out int result)
+            안정성      안정성 낮음                   안정성 높음
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
          */
         static void Main(string[] args)
         {
@@ -137,15 +171,132 @@
             //Console.WriteLine($"십진수 : {x} = 이진수 : {Convert.ToString(x,2).PadLeft(8,'0')}");
             //Console.WriteLine(Convert.ToInt32("1010",8));
 
-            Console.WriteLine("아무키나 누르세요 : ");
-            ConsoleKeyInfo cki = Console.ReadKey(true); //true 쓰면 누른 키 문자를 콘솔에 표시하지 말라는 뜻
-            Console.WriteLine("키 : {0}",cki.Key);
-            Console.WriteLine("문자 : {0}", cki.KeyChar);
-            Console.WriteLine("보조키 : {0}", cki.Modifiers);
-            Console.WriteLine();
+            //Console.WriteLine("아무키나 누르세요 : ");
+            //ConsoleKeyInfo cki = Console.ReadKey(true); //true 쓰면 누른 키 문자를 콘솔에 표시하지 말라는 뜻
+            //Console.WriteLine("키 : {0}",cki.Key);
+            //Console.WriteLine("문자 : {0}", cki.KeyChar);
+            //Console.WriteLine("보조키 : {0}", cki.Modifiers);
+            //Console.WriteLine();
 
+            //if (int.TryParse("안녕", out int result))
+            //{
+            //    Console.WriteLine(result);  //  변환 실패시 반환값은 false이므로 result는 0으로 초기화됨
+            //}
+
+            //if (int.TryParse("1234", out int result2))
+            //{
+            //    Console.WriteLine(result2);  //  변환 성공시 반환값은 true이므로 result2는 1234로 초기화됨
+            //}
+
+            // Console.Write("첫 번째 숫자 입력 : ");
+            //int.TryParse(Console.ReadLine(), out int num1);
+
+            //Console.Write("두 번째 숫자 입력 : ");
+            //int.TryParse(Console.ReadLine(), out int num2);
+
+            //if (num1 > num2) Console.WriteLine($"{num1} 은 더 큰수");
+            //else Console.WriteLine($"{num2} 은 더 큰수");
+
+            //Console.Write("대문자 혹은 소문자 입력 : ");
+            //char.TryParse(Console.ReadLine(), out var result);
+
+            //if ('A' <= result && result <= 'Z')
+            //    Console.WriteLine($"{result}는 대문자 입니다.");
+            //else if ('a' <= result && result <= 'z') Console.WriteLine($"{result}는 소문자 입니다.");
+            //else Console.WriteLine("영어문자가 아닙니다.");
+
+            //Console.Write("점수 : ");
+            //int.TryParse(Console.ReadLine(), out int score);
+
+            //switch (score)
+            //{
+            //    case > 100:
+            //        Console.WriteLine("잘못된 점수");
+            //        break;
+            //    case >= 90 and <= 100:
+            //        Console.WriteLine("A등급");
+            //        break;
+            //    case >= 80 and < 90:
+            //        Console.WriteLine("B등급");
+            //        break;
+            //    case >= 70 and < 80:
+            //        Console.WriteLine("C등급");
+            //        break;
+            //    default:
+            //        Console.WriteLine("낙오");
+            //        break;
+
+            //Console.Write("숫자 입력 : ");
+            //bool isNumber = double.TryParse(Console.ReadLine(), out double number); //숫자가 아니면 false반환   
+
+            //if (!isNumber) Console.WriteLine("숫자가 아닙니다.");
+            //else if (number > 0) Console.WriteLine("양수");
+            //else if (number == 0) Console.WriteLine("0");
+            //else Console.WriteLine("음수");
+
+            //Console.Write("점수를 입력하세요 : ");
+            //bool isScore = int.TryParse(Console.ReadLine(), out int score);
+            //bool trueScore = (0 <= score && score <= 100);
+
+            //if (!isScore) Console.WriteLine("숫자(정수)가 아닙니다.");   // isScore이 숫자형식이 아니면 바로 종료
+            //else if (!trueScore) Console.WriteLine("0~100 점 사이가 아닙니다.");  // 0~100점 사이인지 확인
+            //else  //  둘다 확인 했으니 이제 점수와 등급 확인
+            //{
+            //    string grade = "";
+            //    switch (score)
+            //    {
+            //        case >= 90:
+            //            grade = "A";
+            //            break;
+            //        case >= 80:
+            //            grade = "B";
+            //            break;
+            //        case >= 70:
+            //            grade = "C";
+            //            break;
+            //        case >= 60:
+            //            grade = "D";
+            //            break;
+            //        default:
+            //            grade = "F";
+            //            break;
+            //    }
+            //    Console.WriteLine($"당신의 점수는 {score}점이고 학점은 {grade}등급 입니다.");
+            //}
+
+            //string data1 = "1234";
+            //string data2 = "abcd";
+
+            //if (int.TryParse(data1, out var result1))
+            //{
+            //    Console.WriteLine($"{result1} : {result1.GetType()}타입 ");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("false");
+            //}
+
+            //if (int.TryParse(data2, out var result2))
+            //{
+            //    Console.WriteLine($"{result2} : {result2.GetType()}타입 ");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("거짓");
+            //}
+
+            //Console.Write("1~5번 보기 중에 정답을 고르시오 : ");
+            //bool isTrue = int.TryParse(Console.ReadLine(), out var answer);
+
+            //if (!isTrue) Console.WriteLine("잘못된 입력입니다.");
+            //else if (!(1 <= answer && answer <= 5)) Console.WriteLine("잘못된 보기 선택입니다.");
+            //else Console.WriteLine($"{answer}번 으로 선택하셨군요.");
 
 
         }
+
+
+
     }
 }
+
