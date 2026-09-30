@@ -106,6 +106,69 @@
             사용 예      int.Parse("123")           int.TryParse("123", out int result)
             안정성      안정성 낮음                   안정성 높음
 
+            for(초기식;조건식;증감식)
+            {
+                실행문;
+            }
+
+            while(조건식)
+            {
+                조건식이 참일 때까지 실행할 문장들...
+            }
+
+            do
+            {
+                실행문;
+            }while(조건식);
+            do while문은 무조건 한 번은 실행문이 실행
+
+            foreach(데이터형식 변수 in 컬렉션형식)
+            {
+                문장; // 변수에 들어 있는 값을 사용하는 문장이 온다.
+            }
+
+            goto문 
+            레이블:
+            goto 레이블;
+
+            이름 하나로 데이터 여러 개를 담을 수 있는 그릇을 컬렉션이라고 함. 배열(array), 리스트(list), 사전(dictionary)등이 있음.
+
+            배열 ex)
+            var array = new string[] { "Array", "List", "Dictionary" };
+            foreach(var arr in array) { Console.WriteLine(arr); }
+
+            리스트 ex)
+            var list = new List<string> { "Array", "List", "Dictionary" };
+            foreach(var item in list) { Console.WriteLine(item); }
+
+            사전 ex)
+            var dictionary = new Dictionary<int,string>{ { 0,"Array" } , { 1,"List" } , { 2,"Dictionary" } };
+            foreach(var pair in dictionary)
+            {
+                Console.WriteLine($"{pair.key} - {pair.value}");
+            }
+            
+            배열 : 이름 하나로 데이터 여러 개를 저장하는 데이터 구조
+            ●배열은 요소들의 순서 있는 집합, 각 요소는 인덱스로 접근할 수 있으며, 인덱스는 0부터 시작.
+            ●배열 하나에는 데이터 형식 하나만 보관할 수 있음
+            
+
+            
+            
+                
+
+
+
+
+
+
+
+
+
+            
+
+            
+
 
 
 
@@ -291,6 +354,92 @@
             //if (!isTrue) Console.WriteLine("잘못된 입력입니다.");
             //else if (!(1 <= answer && answer <= 5)) Console.WriteLine("잘못된 보기 선택입니다.");
             //else Console.WriteLine($"{answer}번 으로 선택하셨군요.");
+
+            //Console.Write("몇 팩토리얼을 구하고 싶으신가요 > : ");
+            //bool isNumber = int.TryParse(Console.ReadLine(), out var result);
+
+            //if (!isNumber) Console.WriteLine("잘못된 형식으로 입력하셨습니다.");
+            //else if (result <= 0) Console.WriteLine("0초과의 자연수를 입력해주세요.");
+            //else
+            //{
+            //    int factorial = 1;
+            //    for (int i = 1; i <= result; i++)
+            //    {
+            //        factorial *= i;
+            //        Console.WriteLine($"{i}! = {factorial}");
+            //    }
+            //}
+
+            //Console.Write(" 몇 단을 출력하고 싶으신가요 > : ");
+            //bool isNumber = int.TryParse(Console.ReadLine(), out var dan);
+
+            //if (!isNumber) Console.WriteLine("잘못된 형식 출력");
+            //else if (dan <= 0) Console.WriteLine(" 자연수를 선택 해주세요.");
+            //else
+            //{
+            //    for (int i = 1; i <= 9; i++)
+            //    {
+            //        Console.WriteLine($"{dan}*{i}={dan * i}");
+            //    }
+            //}
+
+            //for (int i = 2; i <= 9; i++)
+            //{
+            //    Console.Write($"{i}단\t");
+            //}
+            //Console.WriteLine();
+            //for (int i = 1; i <= 9; i++)
+            //{
+            //    for (int j = 2; j <= 9; j++)
+            //    {
+            //        Console.Write($"{j}*{i}={i * j}\t");
+            //    }
+            //    Console.WriteLine();
+            //}
+
+            //Console.WriteLine(" 몇 번 반복할까요? :");
+            //int.TryParse(Console.ReadLine(), out var result);
+            //int count = 1;
+            //while (count <= result)
+            //{
+            //    Console.WriteLine($"{count}번째 입니다.");
+            //    count++;
+            //}
+
+            //Console.WriteLine("몇 번째 피보나치 수열을 원하나요 > : ");
+            //bool isNumber = int.TryParse(Console.ReadLine(), out var Fibonacci);
+
+            //if (!isNumber) Console.WriteLine("잘못된 입력형식 입니다.");
+            //else if (Fibonacci <= 0) Console.WriteLine("자연수 형식을 입력해주세요.");
+            //else
+            //{
+            //    int first = 0;
+            //    int second = 1;
+            //    int n = 1;
+            //    while (n <= Fibonacci)
+            //    {
+            //        Console.WriteLine(second);
+            //        int temp = first + second;
+            //        first = second;
+            //        second = temp;
+            //        n++;
+            //    }
+            //}
+
+            //Console.WriteLine("문자열에서 문자 하나씩 뽑아 출력");
+            //string str = "123ABC";
+
+            //foreach (var c in str)
+            //{
+            //    Console.WriteLine(c);
+            //}
+
+
+
+
+
+
+
 
 
         }
