@@ -151,6 +151,47 @@
             배열 : 이름 하나로 데이터 여러 개를 저장하는 데이터 구조
             ●배열은 요소들의 순서 있는 집합, 각 요소는 인덱스로 접근할 수 있으며, 인덱스는 0부터 시작.
             ●배열 하나에는 데이터 형식 하나만 보관할 수 있음
+            ●배열은 메모리의 연속된 공간을 미리 할당하고, 이를 대괄호([])와 0으로 시작하는 정수형 인덱스를 사용하여 접근하는 구조
+            ●배열을 선언할 때는 new키워드로 배열을 생성한 후 사용
+            ●배열에서 값 하나는 요소 또는 항목으로 표현
+            
+            장점
+            ●이름 하나로 변수 여러 개를 묶어 관리하기 편함
+            ●반복문으로 쉽게 반복해서 값을 사용할 수 있음
+            ●필요한 데이터 개수를 정확히 정한다면 메모리를 적게 사용하여 프로그램 크기가 작아지고 성능 상향
+
+            문자열에서 문자 하나씩 뽑아 오기
+            Console.WriteLine("ABC"[0].GetType());
+
+            배열 선언하기
+            int                   []             numbers;    => int[] numbers;
+            배열 요소의 데이터 유형  배열의 차수 기록  배열 변수의 이름기록
+
+            배열 선언 후 new 키워드 연산자를 사용하여 배열 크김만큼 메모리 영역을 잡을 수 있음
+            배열을 선언할 때 사용된 new키워드는 형식을 인스턴스화 시켜주는 연산자
+                                                    => 인스턴스 : 새로운 실체 또는 개체를 의미. 즉 인스턴스화는 새로운 개체를 만드는 작업
+            new 키워드로 배열을 지정한 크기로 만들어 줌
+
+            int[] numbers;
+            numbers = new int[3];
+            => 선언과 동시에 초기화 하기
+            int[] numbers = new int[3] = {1,2,3};
+            => 더  new 키워드와 배열형([]) 생략하기
+            int[] numbers = {1,2,3};
+
+            배열의 종류
+            1. 1차원 배열 : 배열의 첨자를 하나만 사용하는 배열
+            2. 다차원 배열 : 첨자 2개 이상을 사용하는 배열(2차원,3차원, ...)
+            3. 가변 배열 : '배열의 배열' 이라고도 하며, 이름 하나로 다양한 차원의 배열을 표현
+
+            배열 크기인 요소 개수를 얻으려면 [배열이름.Length] 형태로 Length 속성(property) 사용
+            
+
+            
+
+            
+        
+                        
             
 
             
@@ -432,7 +473,65 @@
             //foreach (var c in str)
             //{
             //    Console.WriteLine(c);
+            //} 
+
+            //int[] arr = { 1, 2, 3, 4 };
+            //for (int i = 0; i < 4; i++)
+            //    Console.WriteLine($"for 반복문을 이용한 {i}번째 인덱스 값 : {arr[i]}");
+            //int index = 0;
+            //foreach (var item in arr)
+            //{
+            //    Console.WriteLine($"foreach 반복문을 이용한 {index}번째 인덱스 값 : {item}");
+            //    index++;
             //}
+
+            //char[] characters = { 'a', 'b', 'c', 'd' };
+            //for (int i = 0; i < characters.Length; i++)
+            //{
+            //    Console.WriteLine($"{i}번째 인덱스 값 : {characters[i]}");
+            //}
+
+            //Console.Write("몇 명의 학생있습니까? > ");
+            //int studentCount;
+            //while (true)
+            //{
+            //    if (int.TryParse(Console.ReadLine(), out studentCount) && studentCount > 0)
+            //        break;
+
+            //    Console.WriteLine("다시 입력해주세요.");
+            //}
+
+            //Console.WriteLine("모든 학생들의 점수를 입력해주세요.");
+            //int sum = 0;
+            //float average = 0;
+
+            //int[] studentScore = new int[studentCount];
+
+            //for (int i = 0; i < studentScore.Length; i++)
+            //{
+            //    while (true)
+            //    {
+            //        Console.Write($"{i + 1}번 째 학생의 점수를 입력해주세요. > ");
+            //        if (int.TryParse(Console.ReadLine(), out studentScore[i]) && studentScore[i] >= 0 && studentScore[i] <= 100)
+            //            break;
+
+            //        Console.WriteLine("0~100사이 점수를 입력해주세요.");
+            //    }
+            //    sum += studentScore[i];
+            //}
+
+            //average = (float)sum / studentCount;
+            //Console.WriteLine($"총 학생수는 {studentCount}명이고 평균점수는 {average}점 입니다.");
+
+            //int[,] twoArray = { { 1, 2 }, { 3, 4 } };
+            //for (int i = 0; i < 2; i++)
+            //{
+            //    for (int j = 0; j < 2; j++)
+            //    {
+            //        Console.WriteLine($"twoArray [{i},{j}] = {twoArray[i, j]}");
+            //    }
+            //}
+
 
 
 
