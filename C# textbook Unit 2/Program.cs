@@ -185,6 +185,43 @@
             3. 가변 배열 : '배열의 배열' 이라고도 하며, 이름 하나로 다양한 차원의 배열을 표현
 
             배열 크기인 요소 개수를 얻으려면 [배열이름.Length] 형태로 Length 속성(property) 사용
+
+            Length
+            → 배열 전체 요소 개수
+
+            GetLength(0)
+            → 첫 번째 차원의 길이
+            → 행 개수
+
+            GetLength(1)
+            → 두 번째 차원의 길이
+            → 열 개수
+
+            int[,,] arr = new int[2, 3, 4];
+
+            이 배열을 기준으로 보면:
+            코드	                결과	    의미
+            arr.Rank	        3	    배열이 몇 차원인지
+            arr.Length	        24	    배열 전체 칸 개수
+            arr.GetLength(0)	2	    0번째 차원의 길이
+            arr.GetLength(1)	3	    1번째 차원의 길이
+            arr.GetLength(2)	4	    2번째 차원의 길이
+
+            가변 배열 : 배열의 길이가 가변 길이인 배열
+            데이터 형식 [] [] 배열이름 ;
+            
+            //[2][] 형태로 두 번째를 비워 두면 동적으로 자료 n개로 초기화 가능
+            int[][] zagArray = new int[2][];
+
+            zagArray[0] = new int[] {1,2};      //  0번째 행에 요소 2개로 초기화 
+            zagArray[1] = new int[] {3,4,5};    //  1번째 행에 요소 3개로 초기화
+
+
+            
+
+            
+
+            
             
 
             
@@ -531,6 +568,58 @@
             //        Console.WriteLine($"twoArray [{i},{j}] = {twoArray[i, j]}");
             //    }
             //}
+
+            //int[,] arr = new int[3, 3];
+
+            //for (int i = 0; i < 3; i++)
+            //{
+            //    for (int j = 0; j < 3; j++)
+            //    {
+            //        if (i == j)
+            //            arr[i, j] = 1;
+            //        else
+            //            arr[i, j] = 0;
+
+            //        Console.Write(arr[i, j]);
+            //    }
+            //    Console.WriteLine();
+            //}
+
+            //string[] names = { "백승수", "이세영", "권경민" };
+
+            //int[,] scores =
+            //{
+            //    { 90, 100, 0, 0 },
+            //    { 80,  90, 0, 0 },
+            //    { 100, 80, 0, 0 }
+            //};
+
+            //// 합계와 평균 계산
+            //for (int i = 0; i < scores.GetLength(0); i++)
+            //{
+            //    scores[i, 2] = scores[i, 0] + scores[i, 1]; // 합계
+            //    scores[i, 3] = scores[i, 2] / 2;            // 평균
+            //}
+
+            //// 출력
+            //Console.WriteLine("이름\t국어\t영어\t합계\t평균");
+
+            //for (int i = 0; i < scores.GetLength(0); i++)
+            //{
+            //    Console.Write($"{names[i]}\t");
+
+            //    for (int j = 0; j < scores.GetLength(1); j++)
+            //    {
+            //        Console.Write($"{scores[i, j]}\t");
+            //    }
+
+            //    Console.WriteLine();
+            //}
+
+
+
+
+
 
 
 
