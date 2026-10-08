@@ -58,6 +58,109 @@
         메서드를 선언할 때 매개변수를 선언과 동시에 초기화해 놓으면, 메서드를 호출할 때 매개변수를 지정하지 않아도 기본값으로 자동 설정
         이 기능을 기본 매개변수 또는 선택적 인수 라고함
 
+        명명된 매개변수 사용 : 명명된 매개변수를 사용하면 함수를 호출할 때 필요한 매개변수 이름을 직접 지정할 수 있어 편리함
+
+        Ex)
+        static void Sum(int first,int second)
+        {
+            Console.WriteLine(first + second);
+        }
+
+        static void Main()
+        {
+            Sum(10,20);                     //  기본형태
+            Sum(first : 10, second :20);    //  1. 매개변수 이름과 콜론(:)기호를 사용하여 호출
+            Sum(second : 20, first :10);    //  2. 매개변수 이름을 지정하면 변수 위치 변경 가능
+        }
+
+        함수 오버로드 : 클래스 하나에 매개변수를 달리해서 이름이 동일한 함수 여러 개를 정의할 수 있음
+                      우리말로는 함수 '다중 정의' , 즉 여러 번 정의한다는 의미
+
+        재귀 함수 : 함수에서 함수 자신을 호출하는 것을 재귀 또는 재귀 함수라고 함
+
+        1. 지역변수(Local Variable)
+        함수나 특정 코드 블록 { } 내부에서 선언한 변수야.
+        class Program
+        {
+            static void Main(string[] args)
+            {
+                int hp = 100; // 지역변수
+
+                Console.WriteLine(hp);
+            }
+        }
+
+
+        지역변수의 특징은 다음과 같아.
+        - 선언한 함수나 블록 내부에서만 사용 가능
+        - 다른 함수에서 직접 접근할 수 없음
+        - 함수가 실행될 때 생성되고, 해당 실행이 끝나면 지역변수의 수명도 끝남
+        - 일반적으로 사용하기 전에 값을 할당해야 함
+        예제
+        class Program
+        {
+            static void Main()
+            {
+                int hp = 100;
+                Console.WriteLine(hp);
+            }
+
+            static void Attack()
+            {
+                Console.WriteLine(hp); // ❌ 오류 발생
+            }
+        }
+
+
+        왜 오류가 발생할까?
+        hp는 Main() 내부에서 선언한 지역변수이기 때문에 Attack()에서는 접근할 수 없어.
+
+        2. 전역변수(Global Variable)
+        전역변수는 여러 함수에서 공통으로 사용할 수 있는 변수라는 개념이야.
+        다만 C#에는 엄밀한 의미의 전역변수가 없어. 대신 클래스 내부, 함수 외부에 선언하는 **필드(Field)**를 사용해.
+        class Program
+        {
+            static int hp = 100; // static 필드
+
+            static void Main()
+            {
+                Console.WriteLine(hp);
+                Attack();
+                Console.WriteLine(hp);
+            }
+
+            static void Attack()
+            {
+                hp -= 20;
+            }
+        }
+
+
+        실행 결과:
+        100
+        80
+
+
+        왜 가능할까?
+        hp가 Main()이나 Attack() 내부가 아니라 Program 클래스에 선언된 static 필드이기 때문이야.
+        따라서 두 static 함수에서 같은 hp에 접근할 수 있어.
+
+        3. 지역변수 vs 전역변수 비교
+        구분	            지역변수	                            전역변수처럼 사용하는 필드
+        선언 위치	        함수·블록 내부	                    클래스 내부, 함수 외부
+        다른 함수 접근	직접 불가능	                        접근 제한자 및 static 여부 등에 따라 가능
+        수명	            일반적으로 실행 중 해당 범위에서 사용	    인스턴스 필드 또는 static 필드의 수명에 따름
+        사용 예	        임시 계산값	                        캐릭터 체력, 게임 점수
+
+        화살표 함수 : =>
+        화살표 모양의 연산자인 화살표 연산자(=>)를 사용하여 메서드 코드를 줄일 수 있음.
+
+        식 본문 메서드(expression boiled method) : 화살표 함수는 함수를 축약해서 표현하는 기능. 함수 축약의 영어표현
+
+        로컬 함수 : 함수 내에서만 사용하는 또 다른 함수를 만드는 것.
+
+            
+
 
 
         
@@ -118,6 +221,88 @@
                 Console.WriteLine($"{message} , {level}");
             }           
             
+            // 함수 오버로드 사용하기
+            static void GetNumber(int number)
+            {
+                Console.WriteLine($"Int32 : {number}");
+            }
+
+            static void GetNumber(long number)
+            {
+                Console.WriteLine($"Long64 : {number}");
+            }
+
+            //매개변수가 없거나 있는 함수 오버로드
+            static void Hi()    // 매개변수가 없는 Hi() 함수
+            {   
+                Console.WriteLine("안녕하세요.");
+            }
+            
+            static void Hi(string msg)  // 매개변수가 있는 Hi() 함수
+            {
+                Console.WriteLine("반갑습니다.");
+            }
+
+            //서로 다른 매개변수를 갖는 함수 오버로드
+            static void Multi()
+            {
+                Console.WriteLine("안녕하세요.");
+            }
+
+            static void Multi(string message)
+            {
+                Console.WriteLine("반갑습니다.");
+            }
+
+            static void Multi(string message, int count)
+            {
+                for(int i = 0; i < count; i++)
+                    Console.WriteLine(message);
+            }
+
+            // 팩토리얼 구하기 
+            static int Fact(int n)  // 삼항연산자
+            {
+                return n > 1 ? n * Fact(n - 1) : 1;
+            }
+
+            static int Factorial(int n) // 재귀 함수
+            {
+                if (n == 0 || n == 1) return 1;
+                return n * Factorial(n - 1);
+            }
+
+            static int FactorialFor(int n)  // for 반복문
+            {
+                int total=1;
+                for(int i =n;i<=1;i--)
+                {
+                    total *= i;
+                }
+                return total;
+        
+            }
+
+            //재귀를 사용한 n의 m승 구하기
+            static int myPower(int num, int cnt)
+            {
+                if (cnt == 0) return 1;
+                return num * myPower(num, --cnt);
+            }          
+            
+            //전역 변수와 지역 변수 사용
+            static string message = "전역 변수";    // 필드
+
+            static void ShowMessage()
+            {
+                string message = "지역 변수";       // 지역 변수
+            }
+
+            //화살표 함수 사용하기
+            static void Hi() => Console.WriteLine("안녕하세요.");
+            static void Multiply => Console.WriteLine(a*b);
+            
+            
             
          
 
@@ -162,12 +347,64 @@
                 Log("디버그");
                 Log("레벨", 4);
 
-
+                //함수 오버로드 사용하기
+                GetNumber(1234);
+                GetNumber(1234L);
                 
+                //매개변수가 없거나 있는 함수 오버로드
+                Hi();   
+                Hi("abc");
+
+                //서로 다른 매개변수를 갖는 함수 오버로드
+                Multi();
+                Multi("반갑습니다.");
+                Multi("또 만나요.",3);
+
+                //팩토리얼 함수 호출
+                Console.WriteLine(Fact(4));
+                Console.WriteLine(Factorial(4));
+                Console.WriteLine(FactorialFor(4));
+                
+                //n의 m승 함수 호출
+                Console.WriteLine(myPower(2,2);
+
+                //전역 변수와 지역 변수 사용
+                ShowMessage();
+                Console.WriteLine(message);     //전역변수
+                
+                //화살표 함수 호출
+                Hi();
+                Multiply(3,5);
+
+                //식 본문 메서드 사용
+                Log("함수 축약");
+                Console.WriteLine(IsSame("A","B"));
+
+                //로컬 함수
+                Void Display(string text)
+                {
+                    Console.WriteLine(text);
+                }
+
+                Display("로컬 함수");
+                
+    
+
+
 
                 
                 
              */
         }
+        /*
+         *     //식 본문 메서드 사용
+         *     static void Log(string message) => Console.WriteLine(message);
+         *     static bool IsSame(string a, string b) => a == b;
+         *     참고로 Log()와 IsSame() 같은 사용자 정의 함수는 Main()메서드 앞에 둔다.
+         *     근데 반대로 해도 작동은 잘 됨
+         * 
+         * 
+         * 
+         */
     }
 }
