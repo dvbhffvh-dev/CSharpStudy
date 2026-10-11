@@ -38,6 +38,7 @@
 
 
 
+
          
          
          
@@ -151,7 +152,9 @@
             Console.WriteL
             // 지난 시간 구하기
             TimeSpan times = DateTime.Now - Convert.ToDateTime("1999-01-12");
-            Console.WriteLine($"내가 지금까지 며칠 살았지 => {(int)times.TotalDays}");        
+            Console.WriteLine($"내가 지금까지 며칠 살았지 => {(int)times.TotalDays}");
+            
+
              
              
              
