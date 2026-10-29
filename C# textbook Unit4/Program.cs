@@ -36,6 +36,98 @@
         3. Char 구조체 : 문자 관련 모든 정보를 제공. 예를 들어 특정 문자가 숫자 형식인지 기호 문자인지 공백 문자인지 등을 판단하는 기능을 제공
         4. Guid 구조체 : 절대로 중복되지 않는 유일한 문자열을 생성
 
+        열거형(enumeration)형식 : 기억하기 어려운 상수들을 기억하기 쉬운 이름 하나로 묶어 관리하는 표현 방식
+
+        열거형의 기본 문법
+        enum 열거형 이름
+        {
+            멤버 1,
+            멤버 2,
+            멤버 3,
+        ...
+        }
+        ex)
+        enum MonsterType
+        {
+            Slime,
+            Goblin,
+            Dragon
+        }
+
+        MonsterType monster = MonsterType.Goblin; // 가능
+        MonsterType monster = "Goblin";           // 오류
+        MonsterType monster = 1;                  // 오류
+        Console.WriteLine(monster);
+
+        MonsterType은 단순한 문자열이나 정수가 아니라 독립적인 열거형 자료형이기 때문이야.
+
+        열거형에는 숫자가 자동으로 할당된다
+        Console.WriteLine((int)MonsterType.Slime);  // 0
+        Console.WriteLine((int)MonsterType.Goblin); // 1
+        Console.WriteLine((int)MonsterType.Dragon); // 2
+
+        열거형의 숫자를 직접 지정할 수도 있다
+        enum ItemRarity
+        {
+            Common = 1,
+            Rare = 5,
+            Epic = 10,
+            Legendary = 20
+        }
+
+        또한 일부 멤버에만 숫자를 지정할 수도 있어.
+        enum Level
+        {
+            Easy = 1,
+            Normal,
+            Hard = 10,
+            Hell
+        }
+
+        enum은 값 형식이다.
+
+        열거형에서 자주 사용하는 메서드
+        기능	                    역할
+        ToString()	            enum 멤버 이름을 문자열로 변환
+        Enum.Parse<T>()	        문자열을 enum으로 변환
+        Enum.TryParse<T>()	    변환 가능한지 확인하면서 변환
+        Enum.GetValues<T>()	    열거형에 선언된 값들을 가져옴
+        Enum.IsDefined()	    정의된 enum 값인지 확인
+
+
+        //전경색
+        Console.ForegroundColor = ConsoleColor.Blue;
+        Console.WriteLine("Blue");
+        Console.ResetColor();
+
+        //배경색
+        Console.BackgroundColor = ConsoleColor.Yellow;
+        Console.BackgroundColor = ConsoleColor.Red;
+        Console.WriteLine("Red");
+        Console.ResetColor();
+
+        ConsoleColor를 입력한후 . 을 누르면 열거형의 목록이 나옴
+
+        객체 이니셜라이저 : 객체를 생성하면서 해당 객체의 필드나 속성에 초기값을 지정하는 문법
+        ex)
+        class Monster
+        {
+            public int hp;
+            public int damage;
+        }
+        일반적인 초기화 방법
+        Monster zombie = new Monster();
+
+        zombie.hp = 100;
+        zombie.damage = 20;
+
+        객체 이니셜라이저 사용
+        Monster zombie = new Monster
+        {
+            hp = 100;
+            damage = 20
+        };
+
 
 
 
